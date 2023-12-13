@@ -202,7 +202,7 @@ async function writeBookingToS3(email, bookingData) {
         // Write the updated data back to S3
         await s3.putObject({
             Body: JSON.stringify(existingData),
-            Bucket: "cyclic-jade-boa-cuff-ap-northeast-2",
+            Bucket: "cyclic-harlequin-hermit-crab-hat-eu-west-3",
             Key: "bookings.json",
         }).promise();
     } catch (error) {
@@ -210,7 +210,7 @@ async function writeBookingToS3(email, bookingData) {
         const newBookingData = { [email]: bookingData };
         await s3.putObject({
             Body: JSON.stringify(newBookingData),
-            Bucket: "cyclic-jade-boa-cuff-ap-northeast-2",
+            Bucket: "cyclic-harlequin-hermit-crab-hat-eu-west-3",
             Key: "bookings.json",
         }).promise();
     }
@@ -220,7 +220,7 @@ async function readBookingFromS3() {
     try {
         // Get existing data from S3
         const response = await s3.getObject({
-            Bucket: "cyclic-jade-boa-cuff-ap-northeast-2",
+            Bucket: "cyclic-harlequin-hermit-crab-hat-eu-west-3",
             Key: "bookings.json",
         }).promise();
         console.log(JSON.parse(response.Body.toString()),'response')
